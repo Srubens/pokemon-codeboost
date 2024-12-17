@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pokemon</title>
     <link rel="stylesheet" href="css/plugins.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -98,8 +98,8 @@
             <div class="top">
                 <h2>Select your Pokémon</h2>
                 <div class="search">
-                    <input type="text" placeholder="search name or code">
-                    <button>
+                    <input type="text" id="js-input-search" placeholder="search name or code">
+                    <button id="js-btn-search" >
                      <img src="img/icon-search.svg" alt="">
                     </button> 
                  </div>
@@ -183,7 +183,7 @@
         </div>
     </footer>
 
-    <div class="modal" type-pokemon-modal="grass">
+    <div class="modal" type-pokemon-modal="grass" id="js-modal-details">
         <div class="over"></div>
         <div class="box">
             <button class="close js-close-modal-details">
@@ -191,10 +191,10 @@
             </button>
             <div class="left-container">
                 <div class="icon">
-                    <img src="img/icon-types/grass.svg" alt="">
+                    <img class="icon-img" src="img/icon-types/grass.svg" alt="">
                 </div>
                 <div class="image">
-                    <img src="img/bulbasaur.svg" alt="">
+                    <img src="img/bulbasaur.svg" alt="" id="js-image-pokemon-modal">
                 </div>
             </div>
             <div class="right-container">
