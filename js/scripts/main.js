@@ -14,6 +14,12 @@ btnDropdownSelect.addEventListener("click", () =>{
     btnDropdownSelect.parentElement.classList.toggle('active')
 })
 
+const areaTypesModal = document.getElementById('js-types-pokemon')
+const heightPokemonModal = document.getElementById('js-height-pokemon')
+const weightPokemonModal = document.getElementById('js-weight-pokemon')
+const mainAbilitiesPokemonModal = document.getElementById('js-main-abilities')
+
+
 function openDetailsPokemon(){
     document.documentElement.classList.add('open-modal')
     let codePokemon = this.getAttribute('code-pokemon')
@@ -40,7 +46,81 @@ function openDetailsPokemon(){
         url:`https://pokeapi.co/api/v2/pokemon/${codePokemon}`
     })
     .then((response) =>{
-        console.log(response.data)
+        let data = response.data
+        console.log(data)
+        let infoPokemon = {
+            mainAbilities:primeraLetraMaiuscula(data.abilities[0].ability.name),
+            types:data.types,
+            weight:data.weight,
+            height:data.height,
+            abilities:data.abilities,
+            stats:data.stats,
+            urlType:data.types[0].type.url
+        }
+        console.log(infoPokemon)
+        function listingTypesPokemon(){
+            
+            areaTypesModal.innerHTML = ""
+            let arrayTypes = infoPokemon.types 
+
+            arrayTypes.forEach((itemType) =>{
+                let itemList = document.createElement('li')
+                areaTypesModal.appendChild(itemList)
+                let spanList = document.createElement('span')
+                spanList.classList = `tag-type ${itemType.type.name}`
+                spanList.textContent = primeraLetraMaiuscula(itemType.type.name)
+                
+                itemList.appendChild(spanList)
+                
+
+            })
+        }
+
+        function listingWeaknesses(){
+            const areaWeak = document.getElementById('js-area-weak')
+            areaWeak.innerHTML = ""
+            axios({
+                method:'GET',
+                url:`${infoPokemon.urlType}`
+            })
+            .then((response) =>{
+                console.log(response.data)
+                let weaknesses = response.data.damage_relations.double_damage_from
+                weaknesses.forEach((itemType) =>{
+                    console.log('itemType', itemType)
+                    let itemListWeak = document.createElement('li')
+                    areaWeak.appendChild(itemListWeak)
+                    let spanList = document.createElement('span')
+                    spanList.classList = `tag-type ${itemType.name}`
+                    spanList.textContent = primeraLetraMaiuscula(itemType.name)
+                    
+                    itemListWeak.appendChild(spanList)
+                    
+    
+                })
+            })
+        }
+
+        heightPokemonModal.textContent = `${infoPokemon.height / 10}m`
+        weightPokemonModal.textContent = `${infoPokemon.weight / 10}kg`
+        mainAbilitiesPokemonModal.textContent = infoPokemon.mainAbilities
+
+        const statsHP = document.getElementById('js-stats-hp')
+        const statsAttack = document.getElementById('js-stats-attack')
+        const statsDefense = document.getElementById('js-stats-defense')
+        const statsSpattack = document.getElementById('js-stats-spattack')
+        const statsSpdefense = document.getElementById('js-stats-spdefense')
+        const statsSpeed = document.getElementById('js-stats-speed')
+        statsHP.style.width = `${infoPokemon.stats[0].base_stat}%`
+        statsAttack.style.width = `${infoPokemon.stats[1].base_stat}%`  
+        statsDefense.style.width = `${infoPokemon.stats[2].base_stat}%`
+        statsSpattack.style.width = `${infoPokemon.stats[3].base_stat}%`
+        statsSpdefense.style.width = `${infoPokemon.stats[4].base_stat}%`
+        statsSpeed.style.width = `${infoPokemon.stats[5].base_stat}%`
+        // console.log(statsHP)
+        
+        listingTypesPokemon()
+        listingWeaknesses()
     })
 }
 
@@ -229,7 +309,7 @@ function filterByTypes(){
     const sectionPokemons = document.querySelector('.s-all-info-pokemons')
     const topSection = sectionPokemons.offsetTop
 
-    console.log(topSection)
+    // console.log(topSection)
 
     window.scrollTo({
         top:topSection +288,
@@ -295,7 +375,7 @@ function searchPokemon(){
         url:`https://pokeapi.co/api/v2/pokemon/${valueIpunt}`
     })
     .then((response) =>{
-        console.log(response)
+        // console.log(response)
         areaPokemons.innerHTML = ""
         btnLoadMore.style.display = "none"
         countPokemos.innerText = 1
@@ -306,7 +386,7 @@ function searchPokemon(){
             areaPokemons.innerHTML = ""
             btnLoadMore.style.display = "none"
             countPokemos.innerText = 0
-            console.log(`Erro no: ${erro.mesage}`)
+            // console.log(`Erro no: ${erro.mesage}`)
             alert(`Não foi encontrado nenhum pokemon`)
         }
     })

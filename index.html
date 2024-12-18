@@ -6,6 +6,25 @@
     <title>Pokemon</title>
     <link rel="stylesheet" href="css/plugins.css">
     <link rel="stylesheet" href="css/main.css">
+    <!-- Primary Meta Tags -->
+<meta name="title" content="Pokemon" />
+<meta name="description" content="Projeto do curso codeboots usando api" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://srubens.github.io/pokemon-codeboost/" />
+<meta property="og:title" content="Pokemon" />
+<meta property="og:description" content="Projeto do curso codeboots usando api" />
+<meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://srubens.github.io/pokemon-codeboost/" />
+<meta property="twitter:title" content="Pokemon" />
+<meta property="twitter:description" content="Projeto do curso codeboots usando api" />
+<meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+<!-- Meta Tags Generated with https://metatags.io -->
 </head>
 <body>
 
@@ -202,7 +221,7 @@
                     <h2>Bulbasaur</h2>
                     <span>#001</span>
                 </div>
-                <ul class="type">
+                <ul class="type" id="js-types-pokemon">
                     <li>
                         <span class="tag-type grass" >grass</span>
                     </li>
@@ -213,20 +232,20 @@
                 <ul class="info">
                     <li>
                         <span>Height</span>
-                        <strong>0.7m</strong>
+                        <strong id="js-height-pokemon" >0.7m</strong>
                     </li>
                     <li>
                         <span>Weight</span>
-                        <strong>6.9kg</strong>
+                        <strong id="js-weight-pokemon" >6.9kg</strong>
                     </li>
                     <li>
                         <span>Abilities</span>
-                        <strong>overgrow</strong>
+                        <strong id="js-main-abilities" >overgrow</strong>
                     </li>
                 </ul>
-                <div class="weak">
+                <div class="weak" >
                     <h4>Weaknesses</h4>
-                    <ul>
+                    <ul id="js-area-weak" >
                         <li>
                             <span class="tag-type fiire">fire</span>
                             <span class="tag-type psychic">psychic</span>
@@ -241,7 +260,7 @@
                         <div class="item">
                             <span>HP</span>
                             <div class="bar-status">
-                                <div class="bar"></div>
+                                <div class="bar" id="js-stats-hp"></div>
                                 <ul class="separator">
                                     <li></li>
                                     <li></li>
@@ -253,7 +272,7 @@
                         <div class="item">
                             <span>Attack</span>
                             <div class="bar-status">
-                                <div class="bar"></div>
+                                <div class="bar" id="js-stats-attack" ></div>
                                 <ul class="separator">
                                     <li></li>
                                     <li></li>
@@ -265,7 +284,7 @@
                         <div class="item">
                             <span>Defense</span>
                             <div class="bar-status">
-                                <div class="bar"></div>
+                                <div class="bar" id="js-stats-defense" ></div>
                                 <ul class="separator">
                                     <li></li>
                                     <li></li>
@@ -277,7 +296,7 @@
                         <div class="item">
                             <span>Sp. attack</span>
                             <div class="bar-status">
-                                <div class="bar"></div>
+                                <div class="bar" id="js-stats-spattack" ></div>
                                 <ul class="separator">
                                     <li></li>
                                     <li></li>
@@ -289,7 +308,7 @@
                         <div class="item">
                             <span>Sp.defense</span>
                             <div class="bar-status">
-                                <div class="bar"></div>
+                                <div class="bar" id="js-stats-spdefense"></div>
                                 <ul class="separator">
                                     <li></li>
                                     <li></li>
@@ -301,7 +320,7 @@
                         <div class="item">
                             <span>Speed</span>
                             <div class="bar-status">
-                                <div class="bar"></div>
+                                <div class="bar" id="js-stats-speed"></div>
                                 <ul class="separator">
                                     <li></li>
                                     <li></li>
